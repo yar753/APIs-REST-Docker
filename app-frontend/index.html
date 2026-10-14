@@ -16,10 +16,10 @@
     <ul id="listaTareas"></ul> 
  
     <script> 
-        // Apuntamos al puerto expuesto de nuestra API 
+        
         const API_URL = 'http://localhost:5000/api/tareas'; 
  
-        // 1. CONSUMIR [GET] 
+         
         async function cargarTareas() { 
             const respuesta = await fetch(API_URL); 
             const tareas = await respuesta.json(); 
@@ -32,7 +32,7 @@ onclick="eliminarTarea(${t.id})">❌</button></li>`;
             }); 
         } 
  
-        // 2. CONSUMIR [POST] 
+        
         async function agregarTarea() { 
             const input = document.getElementById('inputTarea'); 
             if (!input.value) return; 
@@ -44,22 +44,22 @@ onclick="eliminarTarea(${t.id})">❌</button></li>`;
             }); 
  
             input.value = ''; 
-              cargarTareas(); // Refrescar la vista 
+              cargarTareas();  
         } 
  
-        // 3. CONSUMIR [DELETE] 
+        
         async function eliminarTarea(id) { 
             await fetch(`${API_URL}/${id}`, { method: 'DELETE' }); 
-            cargarTareas(); // Refrescar la vista 
+            cargarTareas();  
         } 
 
-        // 4. CONSUMIR [DELETE] para vaciar la lista completa
+       
         async function vaciarListaTareas() {
             await fetch(`${API_URL}/limpiar`, { method: 'DELETE' });
             cargarTareas(); // Refrescar la vista
         }
  
-        // Carga inicial 
+        
         cargarTareas(); 
     </script> 
 </body> 
